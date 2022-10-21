@@ -1,0 +1,3 @@
+# Replicar la funcionabilidad de la librería camelCase
+#HINT: Los strings en python son considerados listas
+# texto= "eduardo" > texto[0] = "e"....

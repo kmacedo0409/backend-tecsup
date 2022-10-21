@@ -1,0 +1,15 @@
+pip install NOMBRE_LIBRERIA > instalar la libreria, si no la encuenta
+
+
+
+
+
+
+formas de levantar el entorno
+windows:
+CMD O PowerShell
+entorno_flask/Scripts/activate
+-GIT BASH:
+source entorno_flask/Scripts/activate
+-Mac o Linux:
+source entorno_flask/bin/activate
