@@ -8,4 +8,4 @@
 #  en el cual si esta matriculado no se podra matricular, caso contrario, si. 
 # Y tambien tener otra clase Profesor que va a tener cta_pago y maestria (str)
 #  y el profesor puede mostrar su cta_pago y ademas si tiene maestria al momento 
-# de mostrar la cta_pago indicar que se le tiene que agregar 100 soles
+# de mostrar la cta_pago indicar que se le tiene que agregar 100 soles.

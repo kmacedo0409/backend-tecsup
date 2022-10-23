@@ -12,7 +12,14 @@ class Producto:
     
     def generar_venta(self, fecha, cliente, cantidad):
         # antes de agregar la venta validar si aun tenemos stock para dicha venta
-        # TODO: primero ver si tenemos ventas , si hay iteramos esas ventas y sacamos cuanto de cantidad hemos vendido. Luego ver si ese numero es menor que la cantidad total (el atributo cantidad) si es mayor indicar que YA hemos sobregirado las ventas. Por ultimo a esa cantidad de productos vendidos sumar la cantidad entrante y ver si es menor o igual que la cantidad total, si lo es, entonces generar la venta, caso contrario, no permitir la venta e indicar que no hay stock suficiente. Si es que no hay el saldo suficiente indicar cuanto es lo que tenemos para vender (Hasta el proximo miercoles 26)
+        # TODO: primero ver si tenemos ventas , si hay iteramos esas ventas y sacamos 
+        # cuanto de cantidad hemos vendido. Luego ver si ese numero es menor que la cantidad total
+        #  (el atributo cantidad) si es mayor indicar que YA hemos sobregirado las ventas. 
+        # Por ultimo a esa cantidad de productos vendidos sumar la cantidad entrante y 
+        # ver si es menor o igual que la cantidad total, si lo es, entonces generar la venta, 
+        # caso contrario, no permitir la venta e indicar que no hay stock suficiente. 
+        # Si es que no hay el saldo suficiente indicar cuanto es lo que tenemos para vender
+        #  (Hasta el proximo miercoles 26)
         venta = {
             'fecha': fecha,
             'cliente': cliente,
