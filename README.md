@@ -7,3 +7,5 @@
 ## Este sera el repositorio del curso por las siguientes 10 semanas
 
 Toda la informacion la podras encontrar aquí y en los links dados por el Discord
+
+Cada semana esta en una rama independiente, en el cual se ira detallando a continuación
