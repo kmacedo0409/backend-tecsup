@@ -19,8 +19,6 @@ app.config['MYSQL_PORT']= int(environ.get('MYSQL_PORT'))
 #print (app.config)
 mysql=MySQL(app)
 
-
-
 # un decorador es la forma en la cual nosotros podemos modificar el comportamiento de un método de una clase sin la
 # necesidad de modificarlo directamente, es como utilizar la herencia para poder modificar su comportamiento, 
 # en este caso, dependiendo de sus rutas y su metodo
@@ -35,15 +33,36 @@ def inicio():
 def pagina_inicial():
     return render_template('inicio.html')
 
-@app.route('/estudiantes', methods=['GET'])
+@app.route('/mostrar_estudiantes', methods=['GET'])
 def devolver_estudiantes():
     cursor=mysql.connection.cursor()
     cursor.execute("SELECT * FROM estudiantes")
-    resultado=cursor.fetchall()
+    resultado = cursor.fetchall()
     print(resultado)
-    return{
-        'message': 'Los estudiantes son:'
-    }
+    resultado_final=[]
+    for estudiante in resultado:
+        print(estudiante)
+        estudiante_diccionario ={
+            'id': estudiante[0],
+            'nombre': estudiante[1],
+            'ape_paterno': estudiante[2],
+            'ape_materno': estudiante [3],
+            'correo': estudiante[4],
+            'num_emergencia': estudiante[5],
+            'curso_id': estudiante[6]
+        }
+        print(estudiante_diccionario)
+        resultado_final.append(estudiante_diccionario)
 
+
+    #return{
+    #   'message': 'Los estudiantes son:',
+    #   'content': resultado_final
+    #}
+
+    return render_template('mostrar_estudiantes.html', estudiantes=resultado_final, mensaje='Hola desde Flask')
+@app.route("/agregar-estudiante", methods=['GET'])
+def agregar_estudiante():
+    return render_template('agregar_estudiante.html')
 
 app.run(debug=True)
