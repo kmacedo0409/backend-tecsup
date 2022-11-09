@@ -4,6 +4,7 @@ const ape_paterno = document.getElementById("ape_paterno");
 const ape_materno = document.getElementById("ape_materno");
 const correo = document.getElementById("correo");
 const num_emergencia = document.getElementById("num_emergencia");
+const curso_id = document.getElementById("curso_id");
 
 const agregarEvento = (e) => {
   e.preventDefault();
@@ -13,6 +14,7 @@ const agregarEvento = (e) => {
     ape_materno: ape_materno.value,
     correo: correo.value,
     num_emergencia: num_emergencia.value,
+    curso_id: curso_id.value,
   };
 
   fetch("/agregar_estudiante", { method: "POST", body: JSON.stringify(data), 

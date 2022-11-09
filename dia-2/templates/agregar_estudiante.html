@@ -46,6 +46,21 @@
         aria-describedby="emailHelp"
       />
     </div>
+
+    <div class="mb-3">
+      <label for="curso" class="form-label">Curso</label>
+      <select class="form-select" id="curso_id" aria-label="Default select example">
+        <option selected>Selecciona el curso a elegir</option>
+        {# el value debe ser el id de ese curso en la base de datos #}
+        <option value="1">Matemática</option>
+        <option value="2">CTS</option>
+        <option value="3">Arte</option>
+        <option value="4">Educación Física</option>
+        <option value="5">Inglés</option>
+        <option value="6">Comunicación</option>
+      </select>
+    </div>
+    
     <button type="submit" class="btn btn-primary" id="btn_agregar">
       Agregar
     </button>

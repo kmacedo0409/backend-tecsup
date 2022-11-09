@@ -71,8 +71,8 @@ def agregar_estudiante():
         body = request.get_json()
         print(body)
         cursor=mysql.connection.cursor()
-        cursor.execute("INSERT INTO estudiantes (id, nombre, ape_paterno, ape_materno, correo, num_emergencia) VALUES (DEFAULT, '%s', '%s', '%s', '%s', '%s' )" % (
-            body.get('nombre'), body.get('ape_paterno'), body.get('ape_materno'), body.get('correo'), body.get('num_emergencia')))
+        cursor.execute("INSERT INTO estudiantes (id, nombre, ape_paterno, ape_materno, correo, num_emergencia, curso_id) VALUES (DEFAULT, '%s', '%s', '%s', '%s', '%s', '%s' )" % (
+            body.get('nombre'), body.get('ape_paterno'), body.get('ape_materno'), body.get('correo'), body.get('num_emergencia'), body.get('curso_id')))
 
         mysql.connection.commit()
         cursor.close()
