@@ -1,0 +1,6 @@
+flask db init           => inicializar las migraciones en mi proyecto (debemos tener instalado flask-migrate)
+flask db migrate -m "mensaje" => crea una nueva migracion con el nombre que le colocamos
+flask db upgrade      => ejecuta todas las migraciones pendientes en la base de datos
+flask db downgrade    => ejecutara un revet de todas las migraciones que hemos creado hasta el moemnto no realizar esto porque si no perderemos 
+toda la informacion de la base de datos.
+flask db dowgrade --tag ID_MIGRACION    => hace el revert pero solamente hasta la migracion que nosotros deseamos
