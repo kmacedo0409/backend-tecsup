@@ -22,7 +22,7 @@ class AlmacenModel(models.Model):
         HUMEDO=('C', 'HUMEDO')
     espacioAnaquel=models.IntegerField(db_column='espacio_anaquel')
     tipo=models.CharField(max_length=100, choices=tipoAlmacen)
-    direccion=models.TextField()
+    direccion=models.CharField(max_length=250)
     # RELACIONES ONE-TO-ONE
     # on_delete > se guardara la informacion de como debe actuar el almacen si es que se elimina el departamento (el registro con ese modelo)
     # CASCADE > se elimina el departamento y en forma de cascada se elimina el almacen
@@ -37,6 +37,11 @@ class AlmacenModel(models.Model):
 
     class Meta:
         db_table= 'almacenes'
+
+        ordering =['espacioAnaquel', 'direccion']
+        # unique_together > crear una unicidad compuesta, esto significa que los valores de dos columnas no se pueden repetir
+
+        unique_together=[['direccion', 'tipo']]
 
 
 # Create your models here.
