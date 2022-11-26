@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 from os import environ
 from dotenv import load_dotenv
+from datetime import timedelta
 
 load_dotenv()
 
@@ -42,9 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gestion',
+    'corsheaders', # para trabajar con el uso de los cors
+    'rest_framework', # para django rest_framework pueda devolver la informacion por el navegador  usando css y js
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -133,3 +137,30 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # sirve para indicar cual será el modelo que utilizaremos para el auth user en nuestra base de datos
 
 AUTH_USER_MODEL='gestion.UsuarioModel'
+# esta  libreria rest_framework utilizara todas las configuraciones que definamos en esta variable pára este proyecto
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+
+        # indicamos que la libreria de autenticacion que va autilizar DRF para poder autenticar al usuario entrante 
+        # sera de la libreria simplejwt que acabamos de instalar
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        ],
+}
+# sirve para modificar todas las configuraciones de la libreria simple-jwt
+SIMPLE_JWT={
+    # la token de acceso tendra una duracion de 1 hora 30 mnts y 5 seg
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1, hours=1, minutes=30, seconds=5),
+    # signin es la firma que se utilizara para firmar y verificar las tokens
+    'SIGNING_KEY': environ.get('TOKEN_SECRET'),
+    # USER es el nombre con el cual se guardara en el payload el id del usuario
+    'USER_ID_CLAIM': 'id_del_usuario'
+}
+
+# Sirve para indicar a los CORS que origenes estan permitidos de hacer consultas
+CORS_ALLOWED_ORIGINS= [ 'http://127.0.0.1:5500', 'https://www.google.com' ]
+
+# Sirve para indicar los Metodos que puede consultar a mi backend
+CORS_ALLOW_METHODS=['GET', 'POST', 'PUT']
+
+
