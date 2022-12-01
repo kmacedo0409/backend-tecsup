@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-6me7s_k$qytudl1=(3kb$x+fz7vg5#+9xgqsmtj(sqpu6@3$!y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['restaurante-django-karina.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
