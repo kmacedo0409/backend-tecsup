@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -162,5 +163,7 @@ CORS_ALLOWED_ORIGINS= [ 'http://127.0.0.1:5500', 'https://www.google.com' ]
 
 # Sirve para indicar los Metodos que puede consultar a mi backend
 CORS_ALLOW_METHODS=['GET', 'POST', 'PUT']
+# sirve para indicar donde se guardaran los archivos estaticos (css, js, html)
+STATIC_ROOT= BASE_DIR / 'archivos_estaticos'
 
 

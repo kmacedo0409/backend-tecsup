@@ -13,7 +13,9 @@ from .serializers import UsuarioSerializer, PlatoSerializer
 # https://www.django-rest-framework.org/api-guide/permissions/
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.decorators import api_view
 from .permissions import SoloAdmin
+from django.db import connection
 
 # Create your views here.
 class RegistroUsuarioApiView(CreateAPIView):
@@ -116,4 +118,28 @@ class VistaProtegidaPlatosApiView(ListAPIView):
 
 
         })
+@api_view(http_method_names=['GET'])
+def mostrar_usuario_raw(request):
+    with connection.cursor() as cursor:
+        # al utilizar un SP, function, vista o algo que no se haya definido en los modelos 
+        cursor.execute('CALL DevolverTodosLosUsuarios()')
+        resultado = cursor.fetchall()
+        # print(resultado)
+        # ahora vamos a mapear el resultado / se recomienda utilizar un serializador 
+        # PERO no un modelSerializer puesto que no estamos utilizando ningun modelo
+        for usuario in resultado:
+            print(usuario[3])
 
+        cursor.execute("CALL DevolverUsuariosSegunTipo('ADMIN', @usuarioId)")
+        cursor.execute('SELECT @usuarioId')
+
+        resultado2 = cursor.fetchone()
+        print(resultado2)
+        
+
+        return Response(data={
+            'message': 'Procedimiento almacenado ejecutado exitosamente',
+            'content': {
+                'admin': resultado2[0]
+            }
+        })
