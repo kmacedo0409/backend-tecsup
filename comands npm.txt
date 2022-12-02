@@ -1,0 +1,3 @@
+npm init genera un formulario para crear el archivo packagejson
+npm install PACKAGE instala la liobrería en su vesion mas reciente
+npm uninstall package 
